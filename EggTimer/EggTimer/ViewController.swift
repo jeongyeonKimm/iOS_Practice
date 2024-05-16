@@ -14,13 +14,17 @@ class ViewController: UIViewController {
     
     var secondsRemaining = 60
     
+    var timer = Timer()
+    
     @IBAction func hardnessSelected(_ sender: UIButton) {
+        
+        timer.invalidate()
 
         let hardness = sender.currentTitle!
         
         secondsRemaining = eggTimes[hardness]!
         
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
     }
     
